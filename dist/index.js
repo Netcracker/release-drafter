@@ -194221,6 +194221,13 @@ const findReleases = async ({
   } else {
     log({ context, message: `No tagged release found` })
   }
+  if (lastRelease === taggedRelease) {
+    if (sortedSelectedReleases.length > 2) {
+      lastRelease = sortedSelectedReleases[sortedSelectedReleases.length - 2]
+    } else {
+      lastRelease = null
+    }
+  }
   return { draftRelease, lastRelease, taggedRelease }
 }
 
